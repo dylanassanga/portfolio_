@@ -1,0 +1,673 @@
+/* =============================================
+   RESET & VARIABLES CSS
+   Réinitialisation des styles et définition des couleurs
+   ============================================= */
+
+/* Reset de tous les éléments pour éviter les marges par défaut */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Variables CSS pour les couleurs et gradients */
+:root {
+    /* Couleurs sombres (base du design) */
+    --bg-primary: #0a0a0f;        /* Fond principal très sombre */
+    --bg-secondary: #13131a;      /* Fond secondaire légèrement plus clair */
+    --bg-card: #1a1a24;           /* Fond des cartes */
+    
+    /* Couleurs vives (accents) */
+    --accent-cyan: #00f5ff;       /* Cyan électrique */
+    --accent-purple: #b537ff;     /* Violet vibrant */
+    --accent-pink: #ff006e;       /* Rose flashy */
+    --accent-yellow: #ffd60a;     /* Jaune éclatant */
+    
+    /* Couleurs de texte */
+    --text-primary: #ffffff;      /* Texte principal blanc */
+    --text-secondary: #a0a0b0;    /* Texte secondaire gris clair */
+    
+    /* Gradients pour effets visuels */
+    --gradient-main: linear-gradient(135deg, var(--accent-cyan), var(--accent-purple));
+    --gradient-hover: linear-gradient(135deg, var(--accent-pink), var(--accent-yellow));
+}
+
+/* =============================================
+   STYLES GÉNÉRAUX DU BODY
+   Configuration de base pour toute la page
+   ============================================= */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    line-height: 1.6;
+    overflow-x: hidden; /* Empêche le scroll horizontal */
+}
+
+/* =============================================
+   ANIMATION D'ARRIÈRE-PLAN
+   Conteneur et particules flottantes
+   ============================================= */
+
+/* Conteneur fixe pour les particules en arrière-plan */
+.background-animation {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1; /* Derrière tout le contenu */
+    overflow: hidden;
+}
+
+/* Style des particules individuelles */
+.particle {
+    position: absolute;
+    width: 2px;
+    height: 2px;
+    background: var(--accent-cyan);
+    border-radius: 50%; /* Forme circulaire */
+    opacity: 0.3; /* Semi-transparent */
+    animation: float 20s infinite; /* Animation infinie */
+}
+
+/* Animation de flottement des particules */
+@keyframes float {
+    0%, 100% { 
+        transform: translateY(0) translateX(0); 
+    }
+    25% { 
+        transform: translateY(-100px) translateX(50px); 
+    }
+    50% { 
+        transform: translateY(-50px) translateX(-50px); 
+    }
+    75% { 
+        transform: translateY(-150px) translateX(100px); 
+    }
+}
+
+/* =============================================
+   BARRE DE NAVIGATION
+   Menu fixe en haut de la page
+   ============================================= */
+
+/* Navigation fixe avec effet de flou en arrière-plan */
+nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: rgba(10, 10, 15, 0.8); /* Fond semi-transparent */
+    backdrop-filter: blur(10px); /* Effet de flou */
+    padding: 1.5rem 5%;
+    z-index: 1000; /* Au-dessus de tout */
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Conteneur du contenu de navigation */
+.nav-content {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between; /* Espace entre logo et menu */
+    align-items: center;
+}
+
+/* Logo avec effet gradient */
+.logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    background: var(--gradient-main);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* Liste des liens de navigation */
+.nav-links {
+    display: flex;
+    gap: 2rem; /* Espacement entre les liens */
+    list-style: none; /* Retire les puces */
+}
+
+/* Style des liens de navigation */
+.nav-links a {
+    color: var(--text-secondary);
+    text-decoration: none;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+/* Ligne animée sous les liens */
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--gradient-main);
+    transition: width 0.3s ease;
+}
+
+/* Changement de couleur au survol */
+.nav-links a:hover {
+    color: var(--text-primary);
+}
+
+/* Animation de la ligne au survol */
+.nav-links a:hover::after {
+    width: 100%;
+}
+
+/* =============================================
+   SECTION HERO (PAGE D'ACCUEIL)
+   Première section avec titre principal
+   ============================================= */
+
+/* Section hero en plein écran */
+.hero {
+    min-height: 100vh; /* Hauteur minimale de l'écran */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 5%;
+    position: relative;
+}
+
+/* Contenu centré du hero */
+.hero-content {
+    text-align: center;
+    max-width: 800px;
+}
+
+/* Titre principal avec animation */
+.hero h1 {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+    animation: fadeInUp 1s ease;
+}
+
+/* Texte avec effet gradient */
+.hero .gradient-text {
+    background: var(--gradient-main);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* Sous-titre avec animation retardée */
+.hero p {
+    font-size: 1.3rem;
+    color: var(--text-secondary);
+    margin-bottom: 2rem;
+    animation: fadeInUp 1s ease 0.2s backwards;
+}
+
+/* Conteneur des boutons d'action */
+.cta-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    animation: fadeInUp 1s ease 0.4s backwards;
+}
+
+/* =============================================
+   BOUTONS
+   Styles des boutons primaires et secondaires
+   ============================================= */
+
+/* Style de base des boutons */
+.btn {
+    padding: 1rem 2rem;
+    border: none;
+    border-radius: 50px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: inline-block;
+}
+
+/* Bouton principal avec gradient et ombre */
+.btn-primary {
+    background: var(--gradient-main);
+    color: white;
+    box-shadow: 0 0 20px rgba(0, 245, 255, 0.3);
+}
+
+/* Effet au survol du bouton principal */
+.btn-primary:hover {
+    transform: translateY(-3px); /* Soulève le bouton */
+    box-shadow: 0 5px 30px rgba(0, 245, 255, 0.5);
+}
+
+/* Bouton secondaire avec bordure */
+.btn-secondary {
+    background: transparent;
+    color: var(--text-primary);
+    border: 2px solid var(--accent-cyan);
+}
+
+/* Effet au survol du bouton secondaire */
+.btn-secondary:hover {
+    background: var(--accent-cyan);
+    color: var(--bg-primary);
+    transform: translateY(-3px);
+}
+
+/* =============================================
+   SECTIONS COMMUNES
+   Styles partagés par toutes les sections
+   ============================================= */
+
+/* Espacement et largeur des sections */
+section {
+    padding: 5rem 5%;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+/* Titre de section avec barre décorative */
+.section-title {
+    font-size: 2.5rem;
+    text-align: center;
+    margin-bottom: 3rem;
+    position: relative;
+}
+
+/* Barre décorative sous le titre */
+.section-title::after {
+    content: '';
+    display: block;
+    width: 100px;
+    height: 4px;
+    background: var(--gradient-main);
+    margin: 1rem auto;
+    border-radius: 2px;
+}
+
+/* =============================================
+   SECTION À PROPOS
+   Grille avec texte et statistiques
+   ============================================= */
+
+/* Grille à 2 colonnes pour le contenu */
+.about-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: center;
+}
+
+/* Style des paragraphes de texte */
+.about-text p {
+    color: var(--text-secondary);
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+/* Grille des statistiques */
+.stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+/* Carte de statistique individuelle */
+.stat-card {
+    background: var(--bg-card);
+    padding: 2rem;
+    border-radius: 15px;
+    text-align: center;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease;
+}
+
+/* Effet au survol des cartes de stats */
+.stat-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--accent-cyan);
+    box-shadow: 0 10px 30px rgba(0, 245, 255, 0.2);
+}
+
+/* Chiffre de la statistique avec gradient */
+.stat-number {
+    font-size: 2.5rem;
+    font-weight: bold;
+    background: var(--gradient-main);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* Label de la statistique */
+.stat-label {
+    color: var(--text-secondary);
+    margin-top: 0.5rem;
+}
+
+/* =============================================
+   SECTION COMPÉTENCES
+   Grille de cartes de compétences
+   ============================================= */
+
+/* Grille responsive des compétences */
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+}
+
+/* Carte de compétence individuelle */
+.skill-card {
+    background: var(--bg-card);
+    padding: 2rem;
+    border-radius: 15px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Barre colorée en haut de la carte (cachée par défaut) */
+.skill-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: var(--gradient-main);
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+}
+
+/* Animation de la barre au survol */
+.skill-card:hover::before {
+    transform: scaleX(1);
+}
+
+/* Effet au survol de la carte */
+.skill-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--accent-cyan);
+}
+
+/* Icône de la compétence */
+.skill-icon {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+/* Nom de la compétence */
+.skill-name {
+    font-size: 1.3rem;
+    margin-bottom: 0.5rem;
+}
+
+/* Niveau de compétence */
+.skill-level {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+
+/* =============================================
+   SECTION PROJETS
+   Grille de cartes de projets
+   ============================================= */
+
+/* Grille responsive des projets */
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 2rem;
+}
+
+/* Carte de projet individuelle */
+.project-card {
+    background: var(--bg-card);
+    border-radius: 15px;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+/* Effet au survol de la carte projet */
+.project-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(0, 245, 255, 0.2);
+}
+
+/* Image/icône du projet */
+.project-image {
+    width: 100%;
+    height: 200px;
+    background: var(--gradient-main);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3rem;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Overlay sombre sur l'image */
+.project-image::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.3);
+    transition: opacity 0.3s ease;
+}
+
+/* Disparition de l'overlay au survol */
+.project-card:hover .project-image::after {
+    opacity: 0;
+}
+
+/* Conteneur des informations du projet */
+.project-info {
+    padding: 1.5rem;
+}
+
+/* Titre du projet */
+.project-title {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
+/* Description du projet */
+.project-description {
+    color: var(--text-secondary);
+    margin-bottom: 1rem;
+}
+
+/* Conteneur des tags de technologies */
+.project-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+/* Style des tags individuels */
+.tag {
+    background: rgba(0, 245, 255, 0.1);
+    color: var(--accent-cyan);
+    padding: 0.3rem 0.8rem;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    border: 1px solid var(--accent-cyan);
+}
+
+/* =============================================
+   SECTION CONTACT
+   Formulaire de contact
+   ============================================= */
+
+/* Conteneur centré du formulaire */
+.contact-content {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* Formulaire en colonne */
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+/* Groupe de champ de formulaire */
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+/* Label du formulaire */
+.form-group label {
+    color: var(--text-secondary);
+}
+
+/* Champs de saisie et textarea */
+.form-group input,
+.form-group textarea {
+    background: var(--bg-card);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    padding: 1rem;
+    color: var(--text-primary);
+    font-family: inherit;
+    transition: all 0.3s ease;
+}
+
+/* Effet au focus des champs */
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--accent-cyan);
+    box-shadow: 0 0 20px rgba(0, 245, 255, 0.2);
+}
+
+/* Textarea redimensionnable verticalement */
+.form-group textarea {
+    resize: vertical;
+    min-height: 150px;
+}
+
+/* =============================================
+   FOOTER
+   Pied de page avec liens sociaux
+   ============================================= */
+
+/* Footer avec fond sombre */
+footer {
+    background: var(--bg-secondary);
+    padding: 2rem 5%;
+    text-align: center;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Conteneur des liens sociaux */
+.social-links {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-bottom: 1rem;
+}
+
+/* Style des liens sociaux */
+.social-links a {
+    color: var(--text-secondary);
+    font-size: 1.5rem;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Taille des icônes Lucide */
+.social-links svg {
+    width: 24px;
+    height: 24px;
+}
+
+/* Effet au survol des liens sociaux */
+.social-links a:hover {
+    color: var(--accent-cyan);
+    transform: translateY(-3px);
+}
+
+/* =============================================
+   ANIMATIONS
+   Définitions des animations réutilisables
+   ============================================= */
+
+/* Animation d'apparition depuis le bas */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Classe pour éléments animés au scroll */
+.fade-in {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.6s ease;
+}
+
+/* État visible des éléments animés */
+.fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* =============================================
+   RESPONSIVE DESIGN
+   Adaptations pour écrans mobiles
+   ============================================= */
+
+/* Styles pour tablettes et mobiles */
+@media (max-width: 768px) {
+    /* Réduction de la taille du titre */
+    .hero h1 {
+        font-size: 2.5rem;
+    }
+
+    /* Réduction de l'espacement du menu */
+    .nav-links {
+        gap: 1rem;
+    }
+
+    /* Passage en une colonne pour la section à propos */
+    .about-content {
+        grid-template-columns: 1fr;
+    }
+
+    /* Passage en une colonne pour les stats */
+    .stats {
+        grid-template-columns: 1fr;
+    }
+
+    /* Boutons en colonne sur mobile */
+    .cta-buttons {
+        flex-direction: column;
+    }
+
+    /* Projets en une colonne sur mobile */
+    .projects-grid {
+        grid-template-columns: 1fr;
+    }
+}
