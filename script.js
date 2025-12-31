@@ -309,3 +309,6 @@ window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', eve
         console.log('Passage en mode clair');
     }
 });
+
+
+
