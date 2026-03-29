@@ -285,11 +285,66 @@ document.querySelectorAll('.stat-card').forEach(card => {
 });
 
 // =============================================
+// ANIMATION DES CARTES DE VEILLE (EFFET TILT 3D)
+// Réutilisation de l'effet tilt sur les cartes de veille
+// =============================================
+
+document.querySelectorAll('.veille-card').forEach(card => {
+
+    card.addEventListener('mousemove', function(e) {
+        const rect = this.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        const centerX = rect.width / 2;
+        const centerY = rect.height / 2;
+        const rotateX = (y - centerY) / 30;
+        const rotateY = (centerX - x) / 30;
+
+        this.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-5px)`;
+    });
+
+    card.addEventListener('mouseleave', function() {
+        this.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) translateY(0)';
+    });
+});
+
+// =============================================
+// MISE EN SURBRILLANCE DU LIEN DE NAVIGATION ACTIF
+// Met en évidence la section courante dans la nav
+// =============================================
+
+// Sélection de toutes les sections
+const sections = document.querySelectorAll('section[id]');
+
+// Sélection de tous les liens de nav
+const navLinks = document.querySelectorAll('.nav-links a');
+
+// Observateur de sections pour l'activation du lien de nav
+const navObserver = new IntersectionObserver(function(entries) {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            const currentId = entry.target.getAttribute('id');
+            navLinks.forEach(link => {
+                link.classList.remove('nav-active');
+                if (link.getAttribute('href') === '#' + currentId) {
+                    link.classList.add('nav-active');
+                }
+            });
+        }
+    });
+}, {
+    threshold: 0.4
+});
+
+sections.forEach(section => navObserver.observe(section));
+
+// =============================================
 // MESSAGE DE CONFIRMATION DANS LA CONSOLE
 // Affiche un message pour confirmer que le script est chargé
 // =============================================
 console.log('Portfolio chargé avec succès ! 🚀');
 console.log('Tous les scripts sont opérationnels.');
+console.log('Section veille API REST intégrée ✓');
 
 // =============================================
 // DÉTECTION DU MODE SOMBRE DU SYSTÈME
@@ -309,6 +364,3 @@ window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', eve
         console.log('Passage en mode clair');
     }
 });
-
-
-

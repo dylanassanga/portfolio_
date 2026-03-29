@@ -25,7 +25,7 @@
     
     /* Couleurs de texte */
     --text-primary: #ffffff;      /* Texte principal blanc */
-    --text-secondary: #a0a0b0;    /* Texte secondaire gris clair */
+    --text-secondary: #c8c8d8;    /* Texte secondaire — plus lumineux pour meilleure lisibilité */
     
     /* Gradients pour effets visuels */
     --gradient-main: linear-gradient(135deg, var(--accent-cyan), var(--accent-purple));
@@ -40,7 +40,8 @@ body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background: var(--bg-primary);
     color: var(--text-primary);
-    line-height: 1.6;
+    font-size: 16px;
+    line-height: 1.75;
     overflow-x: hidden; /* Empêche le scroll horizontal */
 }
 
@@ -304,8 +305,9 @@ section {
 /* Style des paragraphes de texte */
 .about-text p {
     color: var(--text-secondary);
-    margin-bottom: 1rem;
+    margin-bottom: 1.2rem;
     font-size: 1.1rem;
+    line-height: 1.85;
 }
 
 /* Grille des statistiques */
@@ -318,11 +320,11 @@ section {
 
 /* Carte de statistique individuelle */
 .stat-card {
-    background: var(--bg-card);
+    background: #1e1e2e;
     padding: 2rem;
     border-radius: 15px;
     text-align: center;
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.12);
     transition: all 0.3s ease;
 }
 
@@ -363,10 +365,10 @@ section {
 
 /* Carte de compétence individuelle */
 .skill-card {
-    background: var(--bg-card);
+    background: #1e1e2e;
     padding: 2rem;
     border-radius: 15px;
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.12);
     transition: all 0.3s ease;
     position: relative;
     overflow: hidden;
@@ -411,7 +413,8 @@ section {
 /* Niveau de compétence */
 .skill-level {
     color: var(--text-secondary);
-    font-size: 0.9rem;
+    font-size: 0.95rem;
+    line-height: 1.6;
 }
 
 /* =============================================
@@ -428,10 +431,10 @@ section {
 
 /* Carte de projet individuelle */
 .project-card {
-    background: var(--bg-card);
+    background: #1e1e2e;
     border-radius: 15px;
     overflow: hidden;
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.12);
     transition: all 0.3s ease;
     cursor: pointer;
 }
@@ -474,19 +477,22 @@ section {
 
 /* Conteneur des informations du projet */
 .project-info {
-    padding: 1.5rem;
+    padding: 1.8rem;
 }
 
 /* Titre du projet */
 .project-title {
     font-size: 1.5rem;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.7rem;
+    color: var(--text-primary);
 }
 
 /* Description du projet */
 .project-description {
     color: var(--text-secondary);
     margin-bottom: 1rem;
+    font-size: 0.98rem;
+    line-height: 1.8;
 }
 
 /* Conteneur des tags de technologies */
@@ -671,4 +677,466 @@ footer {
     .projects-grid {
         grid-template-columns: 1fr;
     }
+}
+
+/* Empêche le lien de modifier le style du texte */
+.project-card-link {
+    text-decoration: none; /* Enlève le soulignement */
+    color: inherit;        /* Garde la couleur de texte définie dans project-info */
+    display: block;        /* Important pour que le lien occupe tout l'espace */
+}
+
+/* Optionnel : Un petit effet au survol pour montrer que c'est cliquable */
+.project-card-link:hover .project-info {
+    background-color: rgba(0, 0, 0, 0.05); /* Change légèrement le fond */
+    transform: translateY(-2px);           /* Soulève un peu le carré */
+    transition: all 0.3s ease;             /* Animation fluide */
+}
+
+
+/* =============================================
+   SECTION VEILLE INFORMATIQUE
+   Styles pour la veille sur les API REST
+   ============================================= */
+
+/* Texte d'introduction de la veille */
+.veille-intro {
+    text-align: center;
+    color: var(--text-secondary);
+    font-size: 1.1rem;
+    max-width: 800px;
+    margin: 0 auto 3rem auto;
+    line-height: 1.8;
+}
+
+.veille-intro strong {
+    color: var(--accent-cyan);
+}
+
+/* En-tête de la veille avec badge et titre */
+.veille-header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+/* Badge de date/contexte */
+.veille-badge {
+    display: inline-block;
+    background: rgba(0, 245, 255, 0.1);
+    color: var(--accent-cyan);
+    border: 1px solid var(--accent-cyan);
+    padding: 0.4rem 1.2rem;
+    border-radius: 50px;
+    font-size: 0.85rem;
+    letter-spacing: 0.05em;
+    margin-bottom: 1rem;
+}
+
+/* Titre principal de la veille */
+.veille-main-title {
+    font-size: 1.8rem;
+    color: var(--text-primary);
+    font-weight: 600;
+    max-width: 700px;
+    margin: 0 auto;
+    line-height: 1.4;
+}
+
+/* Grille des cartes de veille */
+.veille-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+    gap: 2rem;
+    margin-bottom: 3rem;
+}
+
+/* Carte de veille individuelle */
+.veille-card {
+    background: #1e1e2e;
+    border-radius: 15px;
+    padding: 2rem;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Barre colorée en haut de chaque carte (même effet que skill-card) */
+.veille-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: var(--gradient-main);
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+}
+
+.veille-card:hover::before {
+    transform: scaleX(1);
+}
+
+.veille-card:hover {
+    transform: translateY(-5px);
+    border-color: rgba(0, 245, 255, 0.3);
+    box-shadow: 0 10px 30px rgba(0, 245, 255, 0.1);
+}
+
+/* Icône emoji de la carte */
+.veille-card-icon {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+/* Titre de la carte */
+.veille-card-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 1rem;
+}
+
+/* Texte de la carte */
+.veille-card-text {
+    color: var(--text-secondary);
+    font-size: 1rem;
+    line-height: 1.8;
+    margin-bottom: 1rem;
+}
+
+.veille-card-text strong {
+    color: var(--text-primary);
+}
+
+.veille-card-text em {
+    color: var(--accent-cyan);
+    font-style: italic;
+}
+
+/* Liste dans les cartes de veille */
+.veille-list {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+}
+
+.veille-list li {
+    color: var(--text-secondary);
+    font-size: 0.97rem;
+    line-height: 1.75;
+    padding-left: 0.5rem;
+}
+
+.veille-list li strong {
+    color: var(--text-primary);
+}
+
+/* Badges de méthodes HTTP */
+.veille-method {
+    display: inline-block;
+    padding: 0.15rem 0.6rem;
+    border-radius: 5px;
+    font-size: 0.78rem;
+    font-weight: 700;
+    font-family: monospace;
+    margin-right: 0.5rem;
+    letter-spacing: 0.05em;
+}
+
+.veille-method--get    { background: rgba(0, 245, 255, 0.15); color: var(--accent-cyan); border: 1px solid var(--accent-cyan); }
+.veille-method--post   { background: rgba(0, 200, 100, 0.15); color: #00c864; border: 1px solid #00c864; }
+.veille-method--put    { background: rgba(255, 214, 10, 0.15); color: var(--accent-yellow); border: 1px solid var(--accent-yellow); }
+.veille-method--delete { background: rgba(255, 0, 110, 0.15); color: var(--accent-pink); border: 1px solid var(--accent-pink); }
+
+/* La carte sources prend toute la largeur sur les grandes grilles */
+.veille-card--links {
+    grid-column: 1 / -1;
+}
+
+/* Liste des sources cliquables */
+.veille-sources-list {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+    margin-top: 1rem;
+}
+
+/* Lien source individuel */
+.veille-source-link {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 10px;
+    padding: 0.9rem 1.2rem;
+    text-decoration: none;
+    color: var(--text-primary);
+    transition: all 0.3s ease;
+}
+
+.veille-source-link:hover {
+    background: rgba(0, 245, 255, 0.07);
+    border-color: var(--accent-cyan);
+    transform: translateX(4px);
+}
+
+.veille-source-icon {
+    font-size: 1.2rem;
+    flex-shrink: 0;
+}
+
+.veille-source-link span:nth-child(2) {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 0.1rem;
+}
+
+.veille-source-link strong {
+    color: var(--text-primary);
+    font-size: 0.95rem;
+}
+
+.veille-source-link small {
+    color: var(--text-secondary);
+    font-size: 0.82rem;
+}
+
+.veille-source-arrow {
+    color: var(--accent-cyan);
+    font-size: 1.1rem;
+    flex-shrink: 0;
+    transition: transform 0.3s ease;
+}
+
+.veille-source-link:hover .veille-source-arrow {
+    transform: translate(3px, -3px);
+}
+
+/* Bloc de conclusion */
+.veille-conclusion {
+    background: rgba(0, 245, 255, 0.06);
+    border: 1px solid rgba(0, 245, 255, 0.25);
+    border-left: 4px solid var(--accent-cyan);
+    border-radius: 12px;
+    padding: 1.5rem 2rem;
+    color: var(--text-secondary);
+    font-size: 1.05rem;
+    line-height: 1.85;
+}
+
+.veille-conclusion strong {
+    color: var(--text-primary);
+}
+
+/* Responsive veille */
+@media (max-width: 768px) {
+    .veille-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .veille-card--links {
+        grid-column: 1;
+    }
+
+    .veille-main-title {
+        font-size: 1.4rem;
+    }
+
+    .veille-source-link {
+        flex-wrap: wrap;
+    }
+}
+
+/* =============================================
+   STYLES CARTE STAGE DÉTAILLÉE
+   Mise en page des missions de stage
+   ============================================= */
+
+.stage-meta {
+    font-size: 0.82rem !important;
+    color: var(--accent-cyan) !important;
+    margin-bottom: 0.8rem !important;
+    opacity: 0.85;
+}
+
+.stage-missions {
+    list-style: none;
+    padding: 0;
+    margin: 0.8rem 0 1rem 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+}
+
+.stage-missions li {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    line-height: 1.75;
+    padding: 0.6rem 1rem;
+    background: rgba(255, 255, 255, 0.05);
+    border-left: 3px solid rgba(0, 245, 255, 0.5);
+    border-radius: 0 8px 8px 0;
+}
+
+.stage-missions li strong {
+    color: var(--text-primary);
+}
+
+.stage-note {
+    font-size: 0.85rem !important;
+    font-style: italic;
+    background: rgba(0, 245, 255, 0.04);
+    border-radius: 8px;
+    padding: 0.7rem 1rem !important;
+    margin-bottom: 1rem !important;
+    border: 1px solid rgba(0, 245, 255, 0.1);
+}
+
+/* =============================================
+   SECTION CERTIFICATIONS
+   Styles pour les cartes de certifications
+   ============================================= */
+
+/* Grille des certifications */
+.certif-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+    gap: 2rem;
+}
+
+/* Carte de certification */
+.certif-card {
+    background: #1e1e2e;
+    border-radius: 15px;
+    padding: 2rem;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    display: flex;
+    gap: 1.5rem;
+    align-items: flex-start;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Barre colorée en haut au survol */
+.certif-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: var(--gradient-main);
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+}
+
+.certif-card:hover::before {
+    transform: scaleX(1);
+}
+
+.certif-card:hover {
+    transform: translateY(-5px);
+    border-color: rgba(0, 245, 255, 0.3);
+    box-shadow: 0 10px 30px rgba(0, 245, 255, 0.1);
+}
+
+/* Icône de la certification */
+.certif-icon {
+    font-size: 2.5rem;
+    flex-shrink: 0;
+}
+
+/* Contenu texte de la carte */
+.certif-content {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    flex: 1;
+}
+
+/* Titre de la certification */
+.certif-title {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+/* Organisme certificateur */
+.certif-organisme {
+    color: var(--accent-cyan);
+    font-size: 0.88rem;
+    font-weight: 500;
+}
+
+/* Description */
+.certif-desc {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    line-height: 1.75;
+}
+
+/* Pied de carte avec badge */
+.certif-footer {
+    margin-top: 0.5rem;
+}
+
+/* Badge date / score */
+.certif-badge {
+    display: inline-block;
+    background: rgba(0, 245, 255, 0.1);
+    color: var(--accent-cyan);
+    border: 1px solid rgba(0, 245, 255, 0.3);
+    padding: 0.3rem 0.9rem;
+    border-radius: 50px;
+    font-size: 0.82rem;
+}
+
+/* Responsive certifications */
+@media (max-width: 768px) {
+    .certif-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .certif-card {
+        flex-direction: column;
+    }
+}
+
+/* Bouton dans les cartes certifications */
+.certif-btn {
+    padding: 0.6rem 1.4rem;
+    font-size: 0.88rem;
+    margin-top: 0.3rem;
+}
+
+/* =============================================
+   BOUTON GITHUB DANS LES CARTES PROJET
+   ============================================= */
+.github-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 1rem;
+    color: var(--accent-cyan);
+    text-decoration: none;
+    font-size: 0.9rem;
+    border: 1px solid var(--accent-cyan);
+    padding: 0.5rem 1rem;
+    border-radius: 50px;
+    transition: all 0.3s ease;
+}
+
+.github-link:hover {
+    background: var(--accent-cyan);
+    color: var(--bg-primary);
+    transform: translateY(-2px);
 }
