@@ -41,7 +41,7 @@
         .nav-monogram {
             width: 36px; height: 36px;
             border-radius: 8px;
-            background: linear-gradient(135deg, #6c63ff, #48cfad);
+            background: var(--gradient, linear-gradient(135deg, #00d2ff, #7b2ff7));
             display: flex; align-items: center; justify-content: center;
             font-family: 'Syne', sans-serif;
             font-weight: 800;
@@ -86,16 +86,6 @@
             color: #fff;
             background: rgba(255,255,255,0.07);
         }
-        .nav-links li.nav-cta a {
-            background: linear-gradient(135deg, #6c63ff, #48cfad);
-            color: #fff;
-            font-weight: 600;
-            padding: 6px 16px;
-        }
-        .nav-links li.nav-cta a:hover {
-            opacity: 0.88;
-            background: linear-gradient(135deg, #6c63ff, #48cfad);
-        }
         /* Mobile burger */
         .nav-burger {
             display: none;
@@ -103,26 +93,29 @@
             gap: 5px;
             cursor: pointer;
             padding: 4px;
+            background: none;
+            border: none;
         }
         .nav-burger span {
             width: 22px; height: 2px;
             background: rgba(255,255,255,0.7);
             border-radius: 2px;
             transition: 0.3s;
+            display: block;
         }
         @media (max-width: 768px) {
             .nav-burger { display: flex; }
             .nav-links {
                 display: none;
-                position: absolute;
+                position: fixed;
                 top: 64px; left: 0; right: 0;
                 flex-direction: column;
-                background: rgba(8,8,18,0.97);
+                background: rgba(8,8,18,0.98);
                 padding: 1rem;
                 border-bottom: 1px solid rgba(255,255,255,0.06);
                 gap: 4px;
             }
-            .nav-links.open { display: flex; }
+            .nav-links.open { display: flex !important; }
             .nav-links li a { padding: 10px 14px; font-size: 14px; }
             .nav-role { display: none; }
         }
@@ -154,7 +147,6 @@
                 <li><a href="#veille">Veille</a></li>
                 <li><a href="#certifications">Certifications</a></li>
                 <li><a href="#contact">Contact</a></li>
-                <li class="nav-cta"><a href="cv_alternance_ASSANGA_WISSE.pdf" download>CV ↓</a></li>
             </ul>
         </div>
     </nav>
@@ -447,19 +439,15 @@
             <a href="https://github.com/dylanassanga" target="_blank" title="GitHub" class="social-link">
                 <i data-lucide="github"></i>
             </a>
-            <a href="mailto:dylanassanga@gmail.com" title="Email" class="social-link">
+            <a href="/cdn-cgi/l/email-protection#ceaab7a2afa0afbdbdafa0a9af8ea9a3afa7a2e0ada1a3" title="Email" class="social-link">
                 <i data-lucide="mail"></i>
             </a>
         </div>
     </footer>
 
-    <script src="script.js"></script>
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="script.js"></script>
     <script>
         // Burger menu
         const burger = document.getElementById('navBurger');
         const navLinks = document.getElementById('navLinks');
         burger.addEventListener('click', () => navLinks.classList.toggle('open'));
-        navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
-    </script>
-</body>
-</html>
